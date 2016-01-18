@@ -1,0 +1,78 @@
+﻿@using BootstrapPractice.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+    <body background="~/Image/s2.jpg">
+    <nav class="navbar navbar-color navbar-fixed-top">
+        <div class="container-fluid element-color">
+            <div>
+                <img class=" img-thumbnail navbar-brand " src="/Image/blood-icon.png" />
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand element-color" href="#">DonateBlood</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    @{
+                        User u = (User)Session["usersession"];
+                        <li class="active"><a href="~/BloodBank/Index" class="element-color">Home</a></li>
+                        if (u != null && u.role == "Admin")
+                        {
+                            <li class="active"><a href="~/Admin/ShowUsers" class="element-color">Users</a></li>
+                        }
+                        if (u != null)
+                        {
+                            <li class="active"><a href="~/BloodBank/ShowAllDonors" class="element-color">Donors</a></li>
+                        }
+                        <li class="active"><a href="~/BloodBank/aboutBlood" class="element-color">About Blood</a></li>
+                        <li class="active"><a href="~/BloodBank/aboutUs" class="element-color">About us</a></li>
+                        if (u == null)
+                        {
+                            <li class="active"><a href="~/User/SignUp" class="element-color">Sign In</a></li>
+                        }
+                        else
+                        {
+
+                            <li><img class=" img-circle navbar-brand " src="~/Files/@u.imagePath" /></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#" style="color: #ffc0cb">@u.name<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu" style="background-color: #ffc0cb">
+                                    <li><a href="~/User/ViewProfile">View Profile</a></li>
+                                    <li><a href="~/User/EditProfile">Edit Profile</a></li>
+                                    <li><a href="~/User/SignOut">Log Out</a></li>
+                                </ul>
+                            </li>
+                        }
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+    <br /><br />
+
+
+
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
+

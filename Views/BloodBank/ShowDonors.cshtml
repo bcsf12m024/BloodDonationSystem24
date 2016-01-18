@@ -1,0 +1,69 @@
+﻿@using BootstrapPractice.Models
+@{
+    ViewBag.Title = "showUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <font size="7" color="#415c81"> Users</font>
+        <br><br><br><a href="~/BloodBank/donorInformation" class="element-color"><button class="btn btn-success" >Add Donor</button></a>
+        <a href="~/BloodBank/patientInformation" class="element-color"><button class="btn btn-info">Search</button></a>
+        <a href="~/BloodBank/ShowAllDonors" class="element-color"><button class="btn btn-success">All Donors</button></a><br />
+        <font size="5" color="#415c81"> Donors's Details</font>
+        <br><br><br>
+        
+            @{
+                foreach (var s in Model)
+                {
+
+                    <fieldset>
+                        <div>
+                            <table class="table">
+                                <tr class="btn-danger"><th colspan="2">@s.name </th></tr>
+                            </table>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-2" style="font-size: larger">
+
+                                <b>
+                                    Address:<br />
+                                    Email:<br />
+                                    Contact No.:<br />
+                                    Blood Group:<br />
+                                    Gender:<br />
+                                    country:<br />
+                                    city:
+                                </b>
+                            </div>
+                            <div class="col-md-6" style="font-size: larger">
+
+                                @s.address<br />
+                                @s.email<br>
+                                @s.contactNo <br>
+                                <b>@s.bloodGroup <br></b>
+                                @s.gender <br>
+                                @s.country <br>
+                                @s.city
+
+
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <br><br><br>
+                }
+            }
+        
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>

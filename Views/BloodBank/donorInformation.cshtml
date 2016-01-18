@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "donorInformation";
+}
+<div>
+    <div class="container col-md-4 donor-info-margin-left">
+        <h1> Donor Information </h1>
+        <form role="form" action="~/BloodBank/AddDonor" method="POST">
+            <div class="form-group">
+                <label for="email">Name of the Donor:</label>
+                <input type="text" name="name" class="form-control" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender: </label>
+                <select name="gender" class="form-control">
+                    <option selected="selected" value='Male'>Male</option>
+                    <option value='Female'>Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bloodGroup">Blood Group: </label>
+                <select name="bloodGroup" class="form-control">
+                    <option selected="selected" value='APositive'>A Positive</option>
+                    <option value='ANegative'>A Negative</option>
+                    <option value='BPositive'>B Positive</option>
+                    <option value='BNegative'>B Negative</option>
+                    <option value='ABPositive'>AB Positive</option>
+                    <option value='ABNegative'>AB Negative</option>
+                    <option value='OPositive'>O Positive</option>
+                    <option value='ONegative'>O Negative</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label for="email">Residential address:</label>
+                <textarea class="form-control" rows="2" name="address" placeholder="Address"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" name="country" class="form-control" placeholder="Country" />
+            </div>
+            <div class="form-group">
+                <label for="email">City:</label>
+                <input type="text" name="city" class="form-control" placeholder="City" />
+            </div>
+            <div class="form-group">
+                <label for="contactNo">Contact No.:</label>
+                <input type="text" name="contactNo" class="form-control" placeholder="Phone #" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" placeholder="Email" name="email">
+            </div>
+
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </form>
+    </div>
+    
+    <div class="donor-info-margin-right col-md-5">
+        <div>
+            <img src="/Image/donor2.png" class="col-md-8"/>
+        </div>
+        <h2>Who Should Donate Blood</h2>
+        <p>Most people can give blood, but before we accept your blood we need to ensure there's 
+            no risk of us harming you or the patients who will receive it. Use the below links to 
+            see if you are eligible to give blood and to gain advice on preparing to give blood.
+        </p>
+        
+        <p>
+            
+            Male donors can give blood every 12 weeks. That's approximately every 3 months or 4 times in a 12 month period.
+            Female donors can give every 16 weeks or approximately every 4 months.
+            
+        </p>
+        
+    </div>
+</div>

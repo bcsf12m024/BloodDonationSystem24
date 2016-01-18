@@ -1,0 +1,62 @@
+﻿@using BootstrapPractice.Models
+@{
+    ViewBag.Title = "showUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+
+        <font size="7" color="#415c81"> Users</font>
+        <br><br><br>
+        <a href="~/Admin/AddAdmin" class="element-color"><button class="btn btn-success">Add new Admin</button></a><br />
+
+        <font size="5" color="#415c81"> Users's Details</font>
+        <br><br><br>
+
+        @{
+            foreach (var s in Model)
+            {
+                string imageName = s.id + ".jpg";
+
+                <fieldset>
+                    <div>
+                        <table class="table">
+                            <tr class="btn-danger"><th colspan="2">@s.name </th></tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="pull-right" src="~/Files/@s.imagePath" style=" width:100% ; height:auto" />
+                        </div>
+                        <div class="col-md-2" style="font-size: larger">
+                            Email:<br />
+                            country:<br />
+                            city:
+
+                        </div>
+                        <div class="col-md-3" style="font-size: larger">
+
+                            @s.email
+                            <br>@s.country <br>
+                            @s.city<br /><br />
+                            <a href ="/Admin/DeleteUser/@s.id"><input type="button" value="Delete" class="btn-danger" /></a>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <br><br><br>
+        }
+
+
+        }
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

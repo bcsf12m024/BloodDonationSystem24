@@ -1,0 +1,157 @@
+﻿@using BootstrapPractice.Models
+@{
+    ViewBag.Title = "ViewProfile";
+}
+<div class="container">
+
+
+    <div class="row">
+        <div style="margin-top: 80px">
+            @{
+
+                <div class="col-md-5">
+                    <div>
+                        <table class="table">
+                            <tr class="btn-danger"><th colspan="2">@Model.name </th></tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img class="pull-right" src="~/Files/@Model.imagePath" style="width: 100%; height: auto" />
+                        </div>
+                        <div class="col-md-2" style="font-size: larger">
+                            Email:<br />
+                            country:<br />
+                            city:
+
+                        </div>
+                        <div class="col-md-5" style="font-size: larger">
+
+                            @Model.email
+                            <br>@Model.country <br>
+                            @Model.city
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br>
+
+
+        }
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3 " style="margin-left: 100pxs">
+        <div style="background-color: #008080;">
+            <div style="font-family: cursive">
+                <br /><h4 style="color: white; margin-left: 10px"> Request for getting Donation</h4>
+            </div>
+            <form role="form" action="/User/PatientRequest" method="POST">
+                <div class="form-group" style="margin-right: 5px; margin-left: 5px">
+
+                    <input type="text" name="donor_email" class="form-control" placeholder="Donor Email Address" />
+                </div>
+
+
+                <input type="submit" value="Send Request" class="btn btn-success" style="margin-right: 5px; margin-left: 5px" />
+                <input type="reset" value="Cancel" class="btn btn-danger " />
+            </form>
+            <br />
+        </div>
+    </div>
+</div><br /><br /><br />
+<div class="row">
+    <div class="col-md-4" >
+        <div class="col-md-2"></div>
+        @if (@ViewBag.DonorNotifications != null)
+        {
+            <font size="6" color="#415c81"> Patient Requests</font>
+        }
+            <br>
+            <br>
+            @foreach (var s in ViewBag.DonorNotifications)
+             {
+                 <table class="table table-bordered table-condensed" cellspacing="35">
+                     <form action="~/User/UpdateDonations" method="POST">
+                         <tr style="background-color: #556b2f; color: white">
+                             <th>Patient's Email</th>
+                             <td>@s.patient_email</td>
+                         </tr>
+                         <tr>
+                             <th>Donor's Email</th>
+                             <td>@s.donor_email</td>
+                         </tr>
+                         <tr>
+                             <th>Appointment Time</th>
+                             <td>@s.donation_time -</td>
+                         </tr>
+                         <tr>
+                             <th>Appointment Date</th>
+                             <td>@s.donation_date -</td>
+                         </tr>
+                         <tr>
+                             <th>Appointment Status</th>
+                             <td>@s.status</td>
+                         </tr>
+                         <tr>
+                             <th>Time</th>
+                             <td colspan="2"><input type="text" placeholder="Time of Donation" name="time" class="form_control" /></td>
+
+                         </tr>
+                         <tr>
+                             <th>Date</th>
+                             <td><input type="text" placeholder="Date of Donation" name="date" class="form_control" /></td>
+
+                         </tr>
+                         <tr>
+                             <td colspan="2">
+                                 <input type="hidden" value="@s.Id" name="id" />
+                                 <input type="submit" value="Donate" class="btn btn-primary form-control" />
+                             </td>
+                         </tr>
+                     </form>
+                 </table>
+             }
+        
+    </div>
+    <div class="col-md-6 pull-right">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+            @if (@ViewBag.PatientNotifications != null)
+            {
+                <font size="6" color="#415c81"> &nbsp;&nbsp;&nbsp;&nbsp; Donor Responses</font>
+            }
+            <br><br>
+            @foreach (var s in ViewBag.PatientNotifications)
+            {
+                <table class="table table-bordered table-condensed" cellspacing="35">
+
+                    <tr style="background-color: #556b2f; color: white">
+                        <th>Donor's Email</th>
+                        <td>@s.donor_email</td>
+                    </tr>
+                    <tr>
+
+                        <th>Patient's Email</th>
+                        <td>@s.patient_email</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Time</th>
+                        <td>@s.donation_time -</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Date</th>
+                        <td>@s.donation_date -</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Status</th>
+                        <td>@s.status</td>
+                    </tr>
+                </table>
+                <br />
+            }
+        </div>
+
+    </div>
+</div>
+</div>

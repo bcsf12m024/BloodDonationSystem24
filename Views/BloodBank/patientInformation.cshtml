@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "patientInformation";
+}
+
+<div>
+    <div class="container col-md-4 donor-info-margin-right">
+        <h1> Patient Information </h1>
+        <a href="~/BloodBank/SearchFor?searchFor=city" class="element-color"><button class="btn btn-success"> City </button></a>
+        <a href="~/BloodBank/SearchFor?searchFor=country" class="element-color"><button class="btn btn-success">Country</button></a><br />
+        
+            @if (ViewBag.Country != "true" && ViewBag.City != "true")
+            {
+                <form role="form" action="~/BloodBank/ShowBGroupDonors">
+
+                    <div class="form-group">
+                        <label for="bloodGroup">Required Blood Group: </label>
+                        <select name="bloodGroup" class="form-control">
+                            <option selected="selected" value='APositive'>A Positive</option>
+                            <option value='ANegative'>A Negative</option>
+                            <option value='BPositive'>B Positive</option>
+                            <option value='BNegative'>B Negative</option>
+                            <option value='ABPositive'>AB Positive</option>
+                            <option value='ABNegative'>AB Negative</option>
+                            <option value='OPositive'>O Positive</option>
+                            <option value='ONegative'>O Negative</option>
+                        </select>
+
+                    </div>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </form>
+            }
+            
+            @if(ViewBag.City=="true")
+            {
+                <form role="form" action="~/BloodBank/ShowDonors">
+                    <div class="form-group">
+                        <label for="bloodGroup">Required Blood Group: </label>
+                        <select name="bloodGroup" class="form-control">
+                            <option selected="selected" value='APositive'>A Positive</option>
+                            <option value='ANegative'>A Negative</option>
+                            <option value='BPositive'>B Positive</option>
+                            <option value='BNegative'>B Negative</option>
+                            <option value='ABPositive'>AB Positive</option>
+                            <option value='ABNegative'>AB Negative</option>
+                            <option value='OPositive'>O Positive</option>
+                            <option value='ONegative'>O Negative</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country:</label>
+                        <input type="text" name ='country' id='country' class='form-control' required />
+                
+                    </div>
+           
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" name='city' id='city' class='form-control' required />
+                        
+               
+                    </div>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                    </form>
+                    }
+                    @if (ViewBag.Country == "true")
+                    {
+                        <form role="form" action="~/BloodBank/ShowCountryDonors">
+
+                            <div class="form-group">
+                                <label for="bloodGroup">Required Blood Group: </label>
+                                <select name="bloodGroup" class="form-control">
+                                    <option selected="selected" value='APositive'>A Positive</option>
+                                    <option value='ANegative'>A Negative</option>
+                                    <option value='BPositive'>B Positive</option>
+                                    <option value='BNegative'>B Negative</option>
+                                    <option value='ABPositive'>AB Positive</option>
+                                    <option value='ABNegative'>AB Negative</option>
+                                    <option value='OPositive'>O Positive</option>
+                                    <option value='ONegative'>O Negative</option>
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country:</label>
+                                <input type="text" name='country' id='country' class='form-control' required />
+
+                            </div>
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </form>
+                    }
+                            
+                        
+    </div>
+
+    <div class="donor-info-margin-left col-md-5">
+        <div>
+            <img src="/Image/patient1.png" class="col-md-10" />
+        </div>
+        
+
+    </div>
+</div>
